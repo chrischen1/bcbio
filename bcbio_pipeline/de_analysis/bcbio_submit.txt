@@ -1,7 +1,4 @@
 # alignment
-bcbio_nextgen.py -w template ./template.yaml samples.csv ./*
+bcbio_nextgen.py -w template ./ SE_PE_align.yaml project.csv ./*cd project/work
 
-cd project/work
-
-bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/project.yaml -n 32 -t ipython -s lsf -q long -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 1380
-
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/project.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380
