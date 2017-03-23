@@ -1,0 +1,18 @@
+---
+details:
+- algorithm:
+    aligner: bwa
+    align_split_size: 5000000
+    nomap_split_targets: 100
+    mark_duplicates: true
+    recalibrate: true
+    realign: true
+    remove_lcr: true
+    platform: illumina
+    quality_format: standard
+    variantcaller: [freebayes, vardict, varscan]
+    indelcaller: false
+    ensemble:
+      numpass: 2
+  analysis: variant2
+  genome_build: GRCh37

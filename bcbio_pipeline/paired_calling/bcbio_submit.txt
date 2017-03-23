@@ -1,0 +1,29 @@
+#mutatuin calling 
+bcbio_nextgen.py -w template ./pair.yaml pair1_hs578t.csv 20170115_25_CM3908_S25_R1_001.fastq 20170115_26_CM3908_S26_R1_001.fastq cd pair1_hs578t/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair1_hs578t.yaml -n 32 -t ipython -s lsf -q mcore -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 1380
+
+
+bcbio_nextgen.py -w template ./pair.yaml pair2_hs578t.csv 20170115_25_CM3908_S25_R1_001.fastq 20170115_27_CM3908_S27_R1_001.fastq 
+cd pair2_hs578t/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair2_hs578t.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380
+
+
+bcbio_nextgen.py -w template ./pair.yaml pair1_mcf7.csv 20170115_28_CM3908_S28_R1_001.fastq 20170115_29_CM3908_S29_R1_001.fastq
+cd pair1_mcf7/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair1_mcf7.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380
+
+
+bcbio_nextgen.py -w template ./pair.yaml pair1_t47d.csv 20170115_31_CM3908_S31_R1_001.fastq 20170115_32_CM3908_S32_R1_001.fastq cd pair1_t47d/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair1_t47d.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380
+
+
+bcbio_nextgen.py -w template ./pair.yaml pair2_t47d.csv 20170115_31_CM3908_S31_R1_001.fastq 20170115_33_CM3908_S33_R1_001.fastq cd pair2_t47d/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair2_t47d.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380
+
+
+bcbio_nextgen.py -w template ./pair.yaml pair1_hcc1806.csv 20170115_34_CM3908_S34_R1_001.fastq 20170115_35_CM3908_S35_R1_001.fastq cd pair1_hcc1806/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair1_hcc1806.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380
+
+
+bcbio_nextgen.py -w template ./pair.yaml pair2_hcc1806.csv 20170115_34_CM3908_S34_R1_001.fastq 20170115_36_CM3908_S36_R1_001.fastq cd pair2_hcc1806/work
+bsub -q long -W 100:0 -R "rusage[mem=10000]" -o output.out bcbio_nextgen.py ../config/pair2_hcc1806.yaml -n 32 -t ipython -s lsf -q parallel -r mincores=2 -r minconcores=2 '-rW=72:00' --retries 3 --timeout 380

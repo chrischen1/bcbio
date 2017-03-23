@@ -37,12 +37,18 @@ target_gene_processing <- function(){
 
 # get fold change, pvalue and FDR, by per cell line per time point
 # order of well in samples annotation must be the same as the columns in count table
-edgeR_wrapper2 <- function(cnt_time,grp_table_time){
+edgeR_wrapper2 <- function(cnt_time,grp_table_time,combine_fdr = F){
   design <- model.matrix(~condition,data = grp_table_time)
   y_time <- DGEList(counts=cnt_time, group=grp_table_time$condition)
   y_time <- estimateGLMCommonDisp(y_time, design)
   y_time <- estimateGLMTagwiseDisp(y_time, design)
-  
+  if(combine_fdr){
+    fit <- glmFit(y_time, design)
+    lrt <- glmLRT(fit, coef=2:(ncol(design)))
+    lrt_tab <- topTags(lrt,n = Inf)$table[rownames(cnt_time),]
+    colnames(lrt_tab) <- gsub('logFC.condition','',colnames(lrt_tab))
+    return(lrt_tab)
+  }
   p_mat <- fdr_mat <- logFC <- NULL
   col_names <- c()
   for(i in unique(grp_table_time$group)){
