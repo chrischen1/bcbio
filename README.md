@@ -53,3 +53,39 @@ https://github.com/chrischen1/bcbio/blob/master/bcbio_pipeline/mutation_calling/
 
 To keep only certian variant types, use this script below after the last step(you can specify which type to include in the script):
 https://github.com/chrischen1/bcbio/blob/master/bcbio_pipeline/mutation_calling/vep_parser.R
+
+# run_de.R - Run edgeR differential expression analysis from bcbio count results and sample annotation
+Usage: run_de.R [options]
+Example:
+```
+Rscript run_de.R -c path/to/rnaseq.count -a path/to/group_info.txt -o path/to/output
+```
+
+Options:
+	-c CHARACTER, --count=CHARACTER
+		Path to .count file from bcbio output, which is a ensumbl ID by sample ID matrix
+
+	-a CHARACTER, --annotation=CHARACTER
+		Path to group information file, which is a dataframe with 3 columns: group, condition and control
+                
+	group: contains information which treatment samples will be compared against control cases in each group
+                
+	condition: indicates type of treatment, replicates have same condition
+                
+	control: TRUE for controls and FALSE for treatments
+                
+	order of well in samples annotation must be the same as the columns in count table
+
+	-o CHARACTER, --output=CHARACTER
+		Path to save differential analysis results
+
+	-p TRUE/FALSE, --pairwise=TRUE/FALSE
+		If the P-values and FDR are given pairwise or as ANOVA-like test for any differences
+
+	-s TRUE/FALSE, --symbol=TRUE/FALSE
+		If gene symbols will be added to the output
+
+	-h, --help
+		Show this help message and exit
+
+
