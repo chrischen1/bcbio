@@ -56,6 +56,7 @@ https://github.com/chrischen1/bcbio/blob/master/bcbio_pipeline/mutation_calling/
 
 ## run_de.R - Run edgeR differential expression analysis from bcbio count results and sample annotation
 Usage: run_de.R [options]
+
 Example:
 ```
 Rscript run_de.R -c path/to/rnaseq.count -a path/to/group_info.txt -o path/to/output
