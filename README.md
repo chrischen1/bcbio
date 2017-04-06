@@ -62,6 +62,7 @@ Rscript run_de.R -c path/to/rnaseq.count -a path/to/group_info.txt -o path/to/ou
 ```
 
 Options:
+
 	-c CHARACTER, --count=CHARACTER
 		Path to .count file from bcbio output, which is a ensumbl ID by sample ID matrix
 
